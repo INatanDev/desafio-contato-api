@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -21,14 +20,12 @@ public class ContatoController {
     @Autowired
     private ContatoRepository repository;
 
-
     @PostMapping("/salvarContato")
     public ResponseEntity<ContatoResponseDTO> saveContato(@RequestBody ContatoRequestDTO data) {
         Contato contatoData = new Contato(data);
         contatoData.setContato_dh_cad(new Date());
         return ResponseEntity.ok( new ContatoResponseDTO(repository.save(contatoData)));
     }
-
 
     @GetMapping
     public List<ContatoResponseDTO> getAll(){
@@ -47,14 +44,19 @@ public class ContatoController {
         return ResponseEntity.ok(new ContatoResponseDTO(contatoPorID));
     }
 
-//    @PutMapping("{id}")
-//    public ResponseEntity<ContatoResponseDTO> updateContato(@PathVariable Long id, @RequestBody ContatoRequestDTO data){
-//        Contato contatos = repository.findById(id).orElseThrow(
-//                () -> new RuntimeException("Contato nao encontrado")
-//        );
-//
-//        return ResponseEntity.ok(repository.save(contatos));
-//    }
+    @PutMapping("{id}")
+    public ResponseEntity<ContatoResponseDTO> updateContato(@PathVariable Long id, @RequestBody ContatoRequestDTO data){
+        Contato contatos = repository.findById(id).orElseThrow(
+                () -> new RuntimeException("Contato não encontrado!")
+        );
+        BeanUtils.copyProperties(data, contatos, "contatos_id", "contatos_dh_cad");
+
+        Contato contatoAtualizado = repository.save(contatos);
+
+        ContatoResponseDTO responseDTO = new ContatoResponseDTO(contatoAtualizado);
+        return ResponseEntity.ok(responseDTO);
+    }
+
 
 
 }
