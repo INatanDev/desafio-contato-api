@@ -1,9 +1,9 @@
-package com.inatandev.desafio_contatos_api.controller;
+package com.inatandev.desafio_contatos_api.domain.controller;
 
-import com.inatandev.desafio_contatos_api.contato.Contato;
-import com.inatandev.desafio_contatos_api.contato.ContatoRepository;
-import com.inatandev.desafio_contatos_api.contato.ContatoRequestDTO;
-import com.inatandev.desafio_contatos_api.contato.ContatoResponseDTO;
+import com.inatandev.desafio_contatos_api.domain.model.Contato;
+import com.inatandev.desafio_contatos_api.domain.repositors.ContatoRepository;
+import com.inatandev.desafio_contatos_api.application.dto.ContatoRequestDTO;
+import com.inatandev.desafio_contatos_api.application.dto.ContatoResponseDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,6 @@
-package com.inatandev.desafio_contatos_api.contato;
+package com.inatandev.desafio_contatos_api.application.dto;
+
+import com.inatandev.desafio_contatos_api.domain.model.Contato;
 
 import java.util.Date;
 

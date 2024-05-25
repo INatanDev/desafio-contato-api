@@ -1,8 +1,8 @@
-package com.inatandev.desafio_contatos_api.contato;
+package com.inatandev.desafio_contatos_api.domain.model;
 
+import com.inatandev.desafio_contatos_api.application.dto.ContatoRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.beans.BeanUtils;
 
 import java.util.Date;
 
