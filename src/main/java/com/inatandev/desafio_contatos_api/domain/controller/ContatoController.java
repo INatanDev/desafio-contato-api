@@ -28,6 +28,10 @@ public class ContatoController {
 
     @PostMapping("/salvarContato")
     public ResponseEntity<ContatoResponseDTO> saveContato(@RequestBody ContatoRequestDTO data) {
+
+        //validacao do celular
+        validaCelular(data);
+
         Contato contatoData = new Contato(data);
         contatoData.setCadastro(new Date());
         return ResponseEntity.ok( new ContatoResponseDTO(repository.save(contatoData)));
@@ -64,7 +68,7 @@ public class ContatoController {
     }
 
 
-    private void validaNumero(ContatoRequestDTO data){
+    private void validaCelular(ContatoRequestDTO data){
         Optional<Contato>  obj = service.findbyContatoCelular(data.celular());
 
         if (obj.isPresent() && obj.get().getId() != data.id()){
