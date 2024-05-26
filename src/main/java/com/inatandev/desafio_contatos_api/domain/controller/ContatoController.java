@@ -1,16 +1,19 @@
 package com.inatandev.desafio_contatos_api.domain.controller;
 
+import com.inatandev.desafio_contatos_api.application.ContatoService;
 import com.inatandev.desafio_contatos_api.domain.model.Contato;
 import com.inatandev.desafio_contatos_api.domain.repositors.ContatoRepository;
 import com.inatandev.desafio_contatos_api.application.dto.ContatoRequestDTO;
 import com.inatandev.desafio_contatos_api.application.dto.ContatoResponseDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -20,10 +23,13 @@ public class ContatoController {
     @Autowired
     private ContatoRepository repository;
 
+    @Autowired
+    private ContatoService service;
+
     @PostMapping("/salvarContato")
     public ResponseEntity<ContatoResponseDTO> saveContato(@RequestBody ContatoRequestDTO data) {
         Contato contatoData = new Contato(data);
-        contatoData.setContato_dh_cad(new Date());
+        contatoData.setCadastro(new Date());
         return ResponseEntity.ok( new ContatoResponseDTO(repository.save(contatoData)));
     }
 
@@ -49,7 +55,7 @@ public class ContatoController {
         Contato contatos = repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Contato não encontrado!")
         );
-        BeanUtils.copyProperties(data, contatos, "contatos_id", "contatos_dh_cad");
+        BeanUtils.copyProperties(data, contatos, "id", "cadastro");
 
         Contato contatoAtualizado = repository.save(contatos);
 
@@ -58,5 +64,12 @@ public class ContatoController {
     }
 
 
+    private void validaNumero(ContatoRequestDTO data){
+        Optional<Contato>  obj = service.findbyContatoCelular(data.celular());
+
+        if (obj.isPresent() && obj.get().getId() != data.id()){
+            throw new DataIntegrityViolationException("Celular já está sendo usado!");
+        }
+    }
 
 }

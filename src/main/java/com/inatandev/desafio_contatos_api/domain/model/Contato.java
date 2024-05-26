@@ -12,30 +12,44 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "contato_id")
+@EqualsAndHashCode(of = "id")
 public class Contato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long contato_id;
+    @Column(name = "contato_id")
+    private Long id;
 
-    private String contato_nome;
-    private String contato_email;
-    private String contato_celular;
-    private String contato_telefone;
-    private char contato_sn_favorito;
-    private char contato_sn_ativo;
+    @Column(name = "contato_nome")
+    private String nome;
+
+    @Column(name = "contato_email")
+    private String email;
+
+    @Column(name = "contato_celular")
+    private String celular;
+
+    @Column(name = "contato_telefone")
+    private String telefone;
+
+    @Column(name = "contato_sn_favorito")
+    private char favorito;
+
+    @Column(name = "contato_sn_ativo")
+    private char ativo;
+
     @Temporal(TemporalType.TIMESTAMP)
-    private Date contato_dh_cad;
+    @Column(name = "contato_dh_cad")
+    private Date cadastro;
 
 
     public Contato(ContatoRequestDTO data) {
-        this.contato_nome = data.contato_nome();
-        this.contato_email = data.contato_email();
-        this.contato_celular = data.contato_celular();
-        this.contato_telefone = data.contato_telefone();
-        this.contato_sn_favorito = data.contato_sn_favorito();
-        this.contato_sn_ativo = data.contato_sn_ativo();
+        this.nome = data.nome();
+        this.email = data.email();
+        this.celular = data.celular();
+        this.telefone = data.telefone();
+        this.favorito = data.favorito();
+        this.ativo = data.ativo();
     }
 
 }

@@ -4,17 +4,17 @@ import com.inatandev.desafio_contatos_api.domain.model.Contato;
 
 import java.util.Date;
 
-public record ContatoResponseDTO(Long contato_id,String contato_nome, String contato_email, String contato_celular, String contato_telefone, char contato_sn_favorito, char contato_sn_ativo,
-                                 Date contato_dh_cad) {
+public record ContatoResponseDTO(Long id,String nome, String email, String celular, String telefone, char favorito, char ativo,
+                                 Date cadastro) {
 
     public ContatoResponseDTO(Contato contato){
-        this(contato.getContato_id(),
-                contato.getContato_nome(),
-                contato.getContato_email(),
-                contato.getContato_celular(),
-                contato.getContato_telefone(),
-                contato.getContato_sn_favorito(),
-                contato.getContato_sn_ativo(),
-                contato.getContato_dh_cad());
+        this(contato.getId(),
+                contato.getNome(),
+                contato.getEmail(),
+                contato.getCelular(),
+                contato.getTelefone(),
+                contato.getFavorito(),
+                contato.getAtivo(),
+                contato.getCadastro());
     }
 }
