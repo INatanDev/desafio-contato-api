@@ -17,7 +17,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/contato")
+@RequestMapping("/api/contato")
 public class ContatoController {
 
     @Autowired
