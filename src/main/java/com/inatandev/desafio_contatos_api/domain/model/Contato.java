@@ -42,7 +42,6 @@ public class Contato {
     @Column(name = "contato_dh_cad")
     private Date cadastro;
 
-
     public Contato(ContatoRequestDTO data) {
         this.nome = data.nome();
         this.email = data.email();
@@ -51,5 +50,4 @@ public class Contato {
         this.favorito = data.favorito();
         this.ativo = data.ativo();
     }
-
 }

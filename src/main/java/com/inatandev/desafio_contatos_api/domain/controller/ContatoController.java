@@ -1,6 +1,7 @@
 package com.inatandev.desafio_contatos_api.domain.controller;
 
-import com.inatandev.desafio_contatos_api.application.ContatoService;
+
+import com.inatandev.desafio_contatos_api.application.services.ContatoService;
 import com.inatandev.desafio_contatos_api.domain.model.Contato;
 import com.inatandev.desafio_contatos_api.domain.repositors.ContatoRepository;
 import com.inatandev.desafio_contatos_api.application.dto.ContatoRequestDTO;
@@ -35,7 +36,7 @@ public class ContatoController {
 
         Contato contatoData = new Contato(data);
         contatoData.setCadastro(new Date());
-        //return ResponseEntity.create( new ContatoResponseDTO(repository.save(contatoData)));
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new ContatoResponseDTO(repository.save(contatoData)));
     }
 
