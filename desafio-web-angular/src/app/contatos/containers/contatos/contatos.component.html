@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>Contatos</span>
+  </mat-toolbar>
+
+  <mat-form-field appearance="outline" class="search-input">
+    <mat-label>Pesquisar Contato</mat-label>
+    <input matInput (input)="contatosList.onSearch($event)" placeholder="Digite o contato">
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z8 column-flex">
+    <div *ngIf="contatos$ | async as contatos; else loading">
+      <app-contatos-list [contatos]="contatos" (add)="onAdd()" (edit)="onEdit($event)"></app-contatos-list>
+    </div>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+</mat-card>

@@ -1,0 +1,94 @@
+// .mat-table {
+//   overflow: auto;
+//   max-height: 600px;
+// }
+
+// .action-column {
+//   flex: 0 0 75px;
+// }
+
+// .action-column-header {
+//   flex: 0 0 65px;
+// }
+
+// .column-cadastro{
+//   flex: 0 0 205px;
+
+// }
+
+// .header-cell, .data-cell {
+//   text-align: left; // Alinha à esquerda
+//   padding: 8px;
+//   vertical-align: middle;
+//   white-space: nowrap; // Previne quebras de linha dentro das células
+// }
+
+// .data-cell {
+//   font-size: 14px;
+// }
+.mat-table {
+  overflow: auto;
+  max-height: 600px;
+}
+
+.action-column {
+  flex: 0 0 75px;
+}
+
+.action-column-header {
+  flex: 0 0 65px;
+}
+
+.column-cadastro {
+  flex: 0 0 205px;
+}
+
+.header-cell, .data-cell {
+  text-align: left; // Alinha à esquerda por padrão
+  padding: 8px;
+  vertical-align: middle;
+  white-space: nowrap; // Previne quebras de linha dentro das células
+}
+
+.header-cell {
+  font-weight: bold;
+}
+
+.data-cell {
+  font-size: 14px;
+}
+
+.mat-column-nome {
+  width: 20%;
+}
+
+.mat-column-email {
+  width: 20%;
+}
+
+.mat-column-celular {
+  width: 15%;
+}
+
+.mat-column-telefone {
+  width: 15%;
+}
+
+.mat-column-favorito {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-ativo {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-cadastro {
+  width: 10%;
+}
+
+.mat-column-acoes {
+  width: 10%;
+  text-align: center;
+}

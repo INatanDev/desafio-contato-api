@@ -1,0 +1,52 @@
+<mat-card>
+
+    <mat-toolbar>Detalhes do Contato</mat-toolbar>
+
+      <mat-card-content>
+
+        <form [formGroup]="form" class="full-width">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome" formControlName="nome">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Celular" formControlName="celular">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Telefone" formControlName="telefone">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-label>Favorito</mat-label>
+            <mat-select formControlName="favorito">
+              <mat-option value="null"> </mat-option>
+              <mat-option value="S">Sim</mat-option>
+              <mat-option value="N">Não</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-label>Ativo</mat-label>
+            <mat-select formControlName="ativo">
+              <mat-option value="null"> </mat-option>
+              <mat-option value="S">Sim</mat-option>
+              <mat-option value="N">Não</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </form>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+        <button mat-raised-button (click)="onCancel()">Cancelar</button>
+      </mat-card-actions>
+
+</mat-card>

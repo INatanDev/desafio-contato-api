@@ -1,0 +1,70 @@
+<mat-table [dataSource]="filteredContatos">
+  <!-- Name Column -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell  *matHeaderCellDef class="header-cell"> Nome </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell"> {{contatos.nome}} </mat-cell>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef class="header-cell"> Email </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell"> {{contatos.email}} </mat-cell>
+  </ng-container>
+
+  <!-- celular Column -->
+  <ng-container matColumnDef="celular">
+    <mat-header-cell *matHeaderCellDef class="header-cell"> Celular </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell"> {{contatos.celular}} </mat-cell>
+  </ng-container>
+
+  <!-- telefone Column -->
+  <ng-container matColumnDef="telefone">
+    <mat-header-cell *matHeaderCellDef class="header-cell"> Telefone </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell"> {{contatos.telefone}} </mat-cell>
+  </ng-container>
+
+  <!-- favorito Column -->
+  <ng-container matColumnDef="favorito">
+    <mat-header-cell *matHeaderCellDef class="header-cell"> Favorito </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell">
+      <mat-icon [ngStyle]="{'color': contatos.favorito === 'S' ? 'gold' : 'gray'}">
+        {{ contatos.favorito === 'S' ? 'star' : 'star_border' }}
+      </mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <!-- ativo Column -->
+  <ng-container matColumnDef="ativo">
+    <mat-header-cell *matHeaderCellDef class="header-cell"> Ativo </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell">
+      <mat-icon [ngStyle]="{'color': contatos.ativo === 'S' ? 'green' : 'red'}">
+        {{ contatos.ativo === 'S' ? 'check_circle' : 'cancel' }}
+      </mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <!-- data_cadastro Column -->
+  <ng-container matColumnDef="cadastro">
+    <mat-header-cell *matHeaderCellDef class="column-cadastro"> Cadastro </mat-header-cell>
+    <mat-cell *matCellDef="let contatos" class="data-cell"> {{contatos.cadastro}} </mat-cell>
+  </ng-container>
+
+  <!-- actions Column -->
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef class="header-cell action-column-header">
+      <button mat-mini-fab color="accent" aria-label="adicionar um contato">
+        <mat-icon (click)="onAdd()" >add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let contatos" class="data-cell action-column">
+      <button mat-icon-button color="primary" aria-label="Editar o contato">
+        <mat-icon (click)="onEdit(contatos)" >edit</mat-icon>
+      </button>
+    </mat-cell>
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

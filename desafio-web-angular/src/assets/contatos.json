@@ -1,0 +1,12 @@
+
+[
+      { "_id": "1",
+        "nome": "Natan",
+        "email": "teste@teste.com",
+        "celular": "91919191912",
+        "telefone": "8181818182",
+        "favorito": true,
+        "ativo": false,
+        "data_cadastro": "10/08/1998"
+      }
+]
