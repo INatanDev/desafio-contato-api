@@ -1,4 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS DESAFIO;
 create table desafio.contato(
     contato_id serial primary key,
     contato_nome varchar(100),
